@@ -27,4 +27,6 @@ public class ObservationResponseDto {
     private String comment;
 
     private Specie specie;
+
+    private String geoJson;
 }
