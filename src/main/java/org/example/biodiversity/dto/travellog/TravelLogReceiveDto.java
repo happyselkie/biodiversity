@@ -1,4 +1,4 @@
-package org.example.biodiversity.dto;
+package org.example.biodiversity.dto.travellog;
 
 
 import jakarta.validation.constraints.*;

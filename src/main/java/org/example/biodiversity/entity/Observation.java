@@ -5,9 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.biodiversity.dto.ObservationResponseDto;
-import org.example.biodiversity.dto.SpecieResponseDto;
-import org.example.biodiversity.repository.SpecieRepository;
+import org.example.biodiversity.dto.observation.ObservationResponseDto;
+import org.example.biodiversity.service.GBIFSpecieService;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,9 +35,7 @@ public class Observation {
 
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "specieId")
-    private Specie specie;
+    private Long specieId;
 
     public ObservationResponseDto entityToDto() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -50,7 +47,7 @@ public class Observation {
                 .latitude(getLatitude())
                 .observationDate(getObservationDate().format(formatter))
                 .comment(getComment())
-                .specie(getSpecie())
+                .specieId(getSpecieId())
                 .geoJson("http://geojson.io/#data=data:application/json," + URLEncoder.encode(toGeoJson().toString()))
                 .build();
     }
@@ -62,7 +59,7 @@ public class Observation {
             JSONArray featureList = new JSONArray();
             JSONObject point = new JSONObject();
             point.put("type", "Point");
-            JSONArray coord = new JSONArray("["+getLatitude()+","+getLongitude()+"]");
+            JSONArray coord = new JSONArray("["+getLongitude()+","+getLatitude()+"]");
             point.put("coordinates", coord);
             JSONObject feature = new JSONObject();
             feature.put("geometry", point);

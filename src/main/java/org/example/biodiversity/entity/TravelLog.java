@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.biodiversity.dto.TravelLogResponseDto;
+import org.example.biodiversity.dto.travellog.TravelLogResponseDto;
 import org.example.biodiversity.enums.TravelMode;
 
 

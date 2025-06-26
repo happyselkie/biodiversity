@@ -2,8 +2,8 @@ package org.example.biodiversity.controller;
 
 import jakarta.validation.Valid;
 import org.example.biodiversity.dto.StatDto;
-import org.example.biodiversity.dto.TravelLogReceiveDto;
-import org.example.biodiversity.dto.TravelLogResponseDto;
+import org.example.biodiversity.dto.travellog.TravelLogReceiveDto;
+import org.example.biodiversity.dto.travellog.TravelLogResponseDto;
 import org.example.biodiversity.service.TravelLogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

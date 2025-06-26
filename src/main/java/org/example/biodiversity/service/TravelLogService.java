@@ -1,17 +1,16 @@
 package org.example.biodiversity.service;
 
 import org.example.biodiversity.dto.*;
+import org.example.biodiversity.dto.travellog.TravelLogReceiveDto;
+import org.example.biodiversity.dto.travellog.TravelLogResponseDto;
 import org.example.biodiversity.entity.Observation;
 import org.example.biodiversity.entity.TravelLog;
-import org.example.biodiversity.enums.TravelMode;
 import org.example.biodiversity.exception.NotFoundException;
 import org.example.biodiversity.repository.ObservationRepository;
-import org.example.biodiversity.repository.SpecieRepository;
 import org.example.biodiversity.repository.TravelLogRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service

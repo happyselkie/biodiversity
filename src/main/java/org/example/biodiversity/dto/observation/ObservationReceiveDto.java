@@ -1,4 +1,4 @@
-package org.example.biodiversity.dto;
+package org.example.biodiversity.dto.observation;
 
 
 import jakarta.validation.constraints.*;
@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.biodiversity.entity.Observation;
-import org.example.biodiversity.exception.NotFoundException;
-import org.example.biodiversity.repository.SpecieRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -38,7 +36,7 @@ public class ObservationReceiveDto {
     private Long specieId;
 
 
-    public Observation dtoToEntity(SpecieRepository specieRepository){
+    public Observation dtoToEntity(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         return Observation.builder()
@@ -48,8 +46,7 @@ public class ObservationReceiveDto {
                 .latitude(getLatitude())
                 .observationDate(LocalDate.parse(getObservationDate(), formatter))
                 .comment(getComment())
-                .specie(specieRepository.findById(getSpecieId()).orElseThrow(NotFoundException::new))
+                .specieId(getSpecieId())
                 .build();
-
     }
 }

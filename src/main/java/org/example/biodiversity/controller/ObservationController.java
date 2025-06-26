@@ -1,8 +1,8 @@
 package org.example.biodiversity.controller;
 
 import jakarta.validation.Valid;
-import org.example.biodiversity.dto.ObservationReceiveDto;
-import org.example.biodiversity.dto.ObservationResponseDto;
+import org.example.biodiversity.dto.observation.ObservationReceiveDto;
+import org.example.biodiversity.dto.observation.ObservationResponseDto;
 import org.example.biodiversity.service.ObservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

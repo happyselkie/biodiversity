@@ -1,15 +1,11 @@
-package org.example.biodiversity.dto;
+package org.example.biodiversity.dto.observation;
 
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.biodiversity.entity.Specie;
-
-import java.time.LocalDate;
+import org.example.biodiversity.dto.GBIFSpecieDto;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +22,7 @@ public class ObservationResponseDto {
 
     private String comment;
 
-    private Specie specie;
+    private Long specieId;
 
     private String geoJson;
 }
