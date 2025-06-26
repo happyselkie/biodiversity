@@ -10,6 +10,7 @@ import org.example.biodiversity.repository.SpecieRepository;
 import org.example.biodiversity.repository.TravelLogRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +31,22 @@ public class TravelLogService {
 
     public List<TravelLogResponseDto> get(){
         return travelLogRepository.findAll().stream().map(TravelLog::entityToDto).toList();
+    }
+
+    public List<TravelLogResponseDto> getByObservationId(Long observationId){
+        return travelLogRepository.findAll().stream().filter(t -> t.getObservation().getId().equals(observationId)).map(TravelLog::entityToDto).toList();
+    }
+
+    public List<TravelLogResponseDto> getByUserName(String userName){
+        List<Observation> observations = observationRepository.findByNameContaining(userName);
+        List<TravelLogResponseDto> userTravels = new ArrayList<>();
+        for (Observation observation : observations) {
+            List<TravelLogResponseDto> travels = getByObservationId(observation.getId());
+            for (TravelLogResponseDto travel : travels) {
+                userTravels.add(travel);
+            }
+        }
+        return userTravels;
     }
 
     public StatDto getStatByObservationId(Long observationId){

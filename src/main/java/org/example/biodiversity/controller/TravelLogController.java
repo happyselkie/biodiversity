@@ -29,6 +29,11 @@ public class TravelLogController {
         return ResponseEntity.ok(travelLogService.getStatByObservationId(idObservation));
     }
 
+    @GetMapping("/user/{userName}")
+    public ResponseEntity<List<TravelLogResponseDto>> getTravelsByUser(@PathVariable String userName ) {
+        return ResponseEntity.ok(travelLogService.getByUserName(userName));
+    }
+
     @PostMapping
     public ResponseEntity<TravelLogResponseDto> create(@Valid @RequestBody TravelLogReceiveDto travelLog) { return ResponseEntity.status(HttpStatus.CREATED).body(travelLogService.create(travelLog)); }
 }
